@@ -1,26 +1,52 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-text-primary: 255, 255, 255; /* White */
+    --color-text-secondary: 156, 163, 175; /* Gray 400 */
+    --color-bg-primary: 2, 6, 23; /* Slate 950 */
+    --color-bg-secondary: 30, 41, 59; /* Slate 800 */
+    --color-accent-blue: 37, 99, 235; /* Blue 600 */
+    --color-accent-red: 220, 38, 38; /* Red 600 */
+    --color-button-primary: 16, 185, 129; /* Emerald 500 */
+    --color-button-secondary: 245, 158, 11; /* Amber 500 */
+    --color-button-text: 15, 23, 42; /* Slate 900 */
+  }
+
+  body {
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom Utilities (bisa dipindahkan ke file terpisah jika banyak) */
+.bg-grid-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* Agar angka timer lebarnya tetap (tidak goyang) */
+.timer-font {
+  font-family: var(--font-roboto-mono); /* Menggunakan font mono untuk timer */
+  font-variant-numeric: tabular-nums; 
+  font-feature-settings: "tnum";
+  letter-spacing: -0.05em; /* Sedikit rapatkan */
+}
+
+/* Keyframe untuk Pulse Ring */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.3);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 1.5s cubic-bezier(0.075, 0.82, 0.165, 1) infinite;
+}
+
+.radial-gradient-mask-light {
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
 }
