@@ -107,8 +107,8 @@ export default function ChessTimer() {
   const workerRef = useRef<Worker | null>(null);
 
   // Audio
-  const [playClick] = useSound('/sounds/click.mp3', { volume: 0.6 });
-  const [playAlarm] = useSound('/sounds/alarm.mp3', { volume: 0.8 });
+  const [playClick] = useSound('/sounds/click.mp3', { volume: 1.0 });
+  const [playAlarm] = useSound('/sounds/alarm.mp3', { volume: 1.0 });
 
   const triggerSound = useCallback((type: 'click' | 'alarm') => {
     if (isMuted) return;
